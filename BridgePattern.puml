@@ -1,0 +1,41 @@
+@startuml
+abstract class Shape {
+    - renderer : Renderer
+    + Shape(renderer : Renderer)
+    + draw()
+}
+
+class Circle {
+    + Circle(renderer : Renderer)
+    + draw()
+}
+
+class Square {
+    + Square(renderer : Renderer)
+    + draw()
+}
+
+interface Renderer {
+    + renderCircle()
+    + renderSquare()
+}
+
+class VectorRenderer {
+    + renderCircle()
+    + renderSquare()
+}
+
+class RasterRenderer {
+    + renderCircle()
+    + renderSquare()
+}
+
+Shape <|-- Circle
+Shape <|-- Square
+
+Renderer <|.. VectorRenderer
+Renderer <|.. RasterRenderer
+
+Shape o-- Renderer : bridge
+
+@enduml
